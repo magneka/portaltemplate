@@ -1,23 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import LocaleContext from './context/LocaleContext';
+import AuthContext from './context/AuthContext';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useEffect, useState } from 'react';
+import MainLayout from './layout/MainLayout';
+
 
 function App() {
+
+  
+  const [locale] = useState('nb')
+  
+  useEffect(() => {
+    document.title = "Adecco Client Portal"
+  }, []);
+  
+  console.log("App", locale)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>øø
+      <LocaleContext.Provider value={locale}>        
+          <MainLayout />
+          hge
+          <ToastContainer position="bottom-right" />
+      </LocaleContext.Provider>     
     </div>
   );
 }
